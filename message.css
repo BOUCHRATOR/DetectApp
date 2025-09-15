@@ -1,0 +1,417 @@
+/* History.css */
+
+/* --- Importation de la police de caractères --- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- Styles Généraux --- */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  overflow-x: hidden; /* Empêche le défilement horizontal pendant l'animation */
+}
+
+/* --- Conteneur Principal --- */
+.main-container {
+  display: flex;
+}
+
+/* --- Panneau de Navigation (Gauche) --- */
+.layout-left {
+  width: 280px;
+  min-width: 280px; /* Important pour que la largeur soit fixe */
+  min-height: 100vh;
+  background-color: #00A99D;
+  color: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  /* AJOUT : Transition pour une animation fluide */
+  transition: min-width 0.4s ease, width 0.4s ease, padding 0.4s ease;
+}
+
+/* ========================================================= */
+/* NOUVEAU : Style pour cacher la barre latérale             */
+/* ========================================================= */
+.layout-left.collapsed {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden; /* Cache le contenu quand la barre se rétrécit */
+}
+
+/* --- Le reste des styles pour la barre latérale (profil, nav...) reste inchangé --- */
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.profile img {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.profile p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  margin-top: 15px;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  white-space: nowrap; /* Empêche le texte de passer à la ligne pendant la transition */
+}
+nav a.mes {
+  background-color: white; 
+  
+}
+.bodr{
+ border-bottom: 2px solid black;
+ padding-bottom: 10px;
+ border-radius: 25px;
+}
+nav a svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  flex-shrink: 0; /* Empêche les icônes de rétrécir */
+}
+
+
+
+/* --- Zone de Contenu (Droite) --- */
+.contenu {
+  flex-grow: 1;
+  width: 900px;
+  padding: 30px;
+  /* AJOUT : Transition pour l'agrandissement */
+  transition: width 0.4s ease;
+}
+
+/* --- Header dans le contenu --- */
+.contenu header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #00A99D;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contenu header .bi-list {
+  width: 38px;
+  height: 38px;
+  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+  color: black;
+}
+
+/* --- Le reste des styles reste identique --- */
+.contenu header h3 { font-family: 'Merriweather', serif; font-size: 2rem; color: black; margin: 0; font-weight: 400; }
+.contenu .search-container { position: relative; display: flex; align-items: center; }
+.contenu .search-container input { width: 250px; padding: 8px 15px 8px 35px; border-radius: 20px; border: 1px solid #ccc; font-size: 1rem; }
+.contenu .search-container .bi-search { position: absolute; left: 12px; color: #888; width: 16px; height: 16px; }
+.contenu .notification { position: relative; }
+.contenu .notification .bi-bell { width: 24px; height: 24px; color: black; }
+.contenu .notification .messge { position: absolute; top: -5px; right: -8px; background-color: red; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
+.chat-list-container {
+  padding: 10px;
+}
+
+.chat-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  border-left: 5px solid transparent; /* Pour la bande verte */
+}
+
+.chat-list-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Style pour l'élément sélectionné */
+.chat-list-item.selected {
+  background-color: #f0f0f0; /* Couleur de fond légèrement différente */
+  border-left-color: #00bcd4; /* La couleur turquoise de l'image */
+}
+
+.chat-list-item .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  background-color: #ccc; /* Couleur de fond par défaut si pas d'image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Empêche l'avatar de rétrécir */
+}
+
+/* Fallback pour l'icône d'avatar si l'image n'est pas chargée */
+.chat-list-item .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.chat-list-item .avatar img[src=""][alt="User Avatar"] {
+    content: '👤'; /* Icône générique si pas d'image */
+    font-size: 24px;
+    color: #555;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.chat-info {
+  flex-grow: 1;
+  min-width: 0; /* Permet au contenu de rétrécir */
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.chat-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.chat-date, .chat-time {
+  font-size: 0.75em;
+  color: #777;
+  white-space: nowrap; /* Empêche le retour à la ligne des dates/heures */
+}
+
+.chat-message {
+  font-size: 0.9em;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ajout des points de suspension */
+}
+
+/* Styles pour ChatWindow */
+.chat-window-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f7f7f7;
+}
+
+.chat-header-window {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0; /* Empêche l'en-tête de rétrécir */
+}
+
+.chat-header-window .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.chat-header-window .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.chat-header-window .avatar img[src=""][alt="User Avatar"] {
+    content: '👤';
+    font-size: 24px;
+    color: #555;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.chat-name-window {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.messages-area {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  position: relative;
+  word-wrap: break-word; /* Permet le retour à la ligne automatique */
+  line-height: 1.4;
+  padding-bottom: 25px; /* Pour laisser de la place à l'heure */
+}
+
+.message-bubble p {
+  margin: 0;
+}
+
+.message-time {
+  font-size: 0.7em;
+  color: #999;
+  position: absolute;
+  bottom: 5px;
+  right: 10px; /* Ajusté pour l'alignement */
+}
+
+.message-bubble.sent {
+  background-color: #dcf8c6; /* Vert clair */
+  align-self: flex-end;
+  border-bottom-right-radius: 2px; /* Pour la petite pointe */
+}
+
+
+.message-bubble.received1 {
+  background-color: #fff;
+  align-self: flex-start;
+  display: flex; /* Utilisation de flex pour l'avatar interne */
+  align-items: flex-end; /* Aligne l'avatar en bas */
+  border-bottom-left-radius: 2px; /* Pour la petite pointe */
+  padding-left: 55px; /* Pour faire de la place à l'avatar */
+}
+
+.message-bubble.received .message-time {
+  left: 55px; /* Aligne l'heure avec le texte reçu */
+  right: unset;
+}
+
+.message-bubble .message-avatar {
+  position: absolute;
+  left: 5px;
+  bottom: 0px; /* Positionne l'avatar en bas de la bulle */
+  width: 30px;
+  height: 30px;
+  margin-right: 0;
+}
+.message-bubble .message-avatar img {
+  display: block;
+}
+.message-bubble .message-avatar img[src=""][alt="User Avatar"] {
+    content: '👤';
+    font-size: 18px; /* Taille plus petite pour l'avatar de la bulle */
+}
+
+
+.message-input-area {
+  display: flex;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  
+}
+
+.message-input-area input {
+  flex-grow: 1;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  padding: 10px 15px;
+  font-size: 1em;
+  margin-right: 10px;
+
+}
+
+.message-input-area input:focus {
+  background-color: #e9e9e9;
+}
+
+.send-button {
+  background-color: #00bcd4; /* Couleur de l'image (turquoise) */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  flex-shrink: 0; /* Empêche le bouton de rétrécir */
+}
+
+.send-button:hover {
+  background-color: #00a9bb;
+}
+
+.send-button svg {
+  transform: rotate(45deg); /* Pour orienter l'icône d'avion */
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+.chat-section {
+  display: flex;
+  height: calc(100vh - 120px);
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.chat-list-container {
+  width: 30%;
+  min-width: 250px;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  background-color: #fafafa;
+}
+
+.chat-window-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}

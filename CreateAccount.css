@@ -1,0 +1,75 @@
+
+.header {
+    width: 100%;
+    max-width: 500px; /* Largeur maximale pour le conteneur */
+    position: relative;
+    background-image: url(../public/log.png);
+    background-repeat: no-repeat;
+    padding-top: 1000px; /* Espace pour le logo en haut */
+}
+
+
+
+.from-containerdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.from {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px; /* Largeur du formulaire */
+    border: 1px solid #e0e0e0;
+    padding: 40px 30px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.test{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px; /* Bordures arrondies */
+    background-color: #f9f9f9;
+    font-size: 1em;
+    color: #333;
+    text-align: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); /* Ombre intérieure légère */
+}
+
+.test::placeholder {
+    color: #b0b0b0; /* Couleur du placeholder */
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Change le type de l'input pour la date au focus */
+input[type="text"][placeholder="DATE DE NAISSANCE"]:focus {
+    color: #333; /* Pour s'assurer que le texte de la date est visible */
+}
+
+
+button[type="submit"] {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px; /* Bordures arrondies */
+    background-color: #00A99D; /* Couleur turquoise */
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 15px; /* Espace au-dessus du bouton */
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #008f84; /* Couleur au survol */
+}

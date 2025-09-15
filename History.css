@@ -1,0 +1,136 @@
+/* History.css */
+
+/* --- Importation de la police de caractères --- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- Styles Généraux --- */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  overflow-x: hidden; /* Empêche le défilement horizontal pendant l'animation */
+}
+
+/* --- Conteneur Principal --- */
+.main-container {
+  display: flex;
+}
+
+/* --- Panneau de Navigation (Gauche) --- */
+.layout-left {
+  width: 280px;
+  min-width: 280px; /* Important pour que la largeur soit fixe */
+  min-height: 100vh;
+  background-color: #00A99D;
+  color: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  /* AJOUT : Transition pour une animation fluide */
+  transition: min-width 0.4s ease, width 0.4s ease, padding 0.4s ease;
+}
+
+/* ========================================================= */
+/* NOUVEAU : Style pour cacher la barre latérale             */
+/* ========================================================= */
+.layout-left.collapsed {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden; /* Cache le contenu quand la barre se rétrécit */
+}
+
+/* --- Le reste des styles pour la barre latérale (profil, nav...) reste inchangé --- */
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.profile img {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.profile p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  margin-top: 15px;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  white-space: nowrap; /* Empêche le texte de passer à la ligne pendant la transition */
+}
+nav a.history {
+  background-color: white; 
+}
+nav a svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  flex-shrink: 0; /* Empêche les icônes de rétrécir */
+}
+nav .mesgg {
+  border-bottom: 2px solid black;
+  padding-bottom: 25px;
+}
+
+
+/* --- Zone de Contenu (Droite) --- */
+.content {
+  flex-grow: 1;
+  padding: 30px;
+  /* AJOUT : Transition pour l'agrandissement */
+  transition: width 0.4s ease;
+}
+
+/* --- Header dans le contenu --- */
+.content header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #00A99D;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content header .bi-list {
+  width: 28px;
+  height: 28px;
+  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+  color: black;
+}
+
+/* --- Le reste des styles reste identique --- */
+.content header h3 { font-family: 'Merriweather', serif; font-size: 2rem; color: black; margin: 0; font-weight: 400; }
+.content .search-container { position: relative; display: flex; align-items: center; }
+.content .search-container input { width: 250px; padding: 8px 15px 8px 35px; border-radius: 20px; border: 1px solid #ccc; font-size: 1rem; }
+.content .search-container .bi-search { position: absolute; left: 12px; color: #888; width: 16px; height: 16px; }
+.content .notification { position: relative; }
+.content .notification .bi-bell { width: 24px; height: 24px; color: black; }
+.content .notification .messge { position: absolute; top: -5px; right: -8px; background-color: red; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
+.tble { width: 100%; border-collapse: collapse; background-color: white; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); border-radius: 8px; overflow: hidden; }
+.tble th, .tble td { padding: 20px; text-align: left; border-bottom: 1px solid #ddd; }
+.tble thead { background-color: #f8f9fa; }
+.tble th { font-family: 'Merriweather', serif; font-size: 1.1rem; color: #333; text-transform: uppercase; }
+.tble tbody tr:last-child td { border-bottom: none; }
+.tble td { font-family: 'Roboto', sans-serif; font-size: 1rem; vertical-align: middle; }
+.tble td img { width: 100px; height: auto; border-radius: 8px; }

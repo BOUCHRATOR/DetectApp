@@ -1,0 +1,253 @@
+/* History.css */
+
+/* --- Importation de la police de caractères --- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- Styles Généraux --- */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  overflow-x: hidden; /* Empêche le défilement horizontal pendant l'animation */
+}
+
+/* --- Conteneur Principal --- */
+.main-container {
+  display: flex;
+}
+
+/* --- Panneau de Navigation (Gauche) --- */
+.layout-left {
+  width: 280px;
+  min-width: 280px; /* Important pour que la largeur soit fixe */
+  min-height: 100vh;
+  background-color: #00A99D;
+  color: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  /* AJOUT : Transition pour une animation fluide */
+  transition: min-width 0.4s ease, width 0.4s ease, padding 0.4s ease;
+}
+
+/* ========================================================= */
+/* NOUVEAU : Style pour cacher la barre latérale             */
+/* ========================================================= */
+.layout-left.collapsed {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden; /* Cache le contenu quand la barre se rétrécit */
+}
+
+/* --- Le reste des styles pour la barre latérale (profil, nav...) reste inchangé --- */
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.profile img {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.profile p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  margin-top: 15px;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  white-space: nowrap; /* Empêche le texte de passer à la ligne pendant la transition */
+}
+nav a.malde {
+  background-color: white; 
+}
+nav a svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  flex-shrink: 0; /* Empêche les icônes de rétrécir */
+}
+nav .mesg {
+  border-bottom: 2px solid black;
+  padding-bottom: 25px;
+}
+
+
+/* --- Zone de Contenu (Droite) --- */
+.content1 {
+  flex-grow: 1;
+  padding: 30px;
+  /* AJOUT : Transition pour l'agrandissement */
+  transition: width 0.4s ease;
+}
+
+/* --- Header dans le contenu --- */
+.content1 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #00A99D;
+  width: 130%;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content1 header .bi-list {
+  width: 28px;
+  height: 28px;
+  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+  color: black;
+}
+
+/* --- Le reste des styles reste identique --- */
+.content1 header h3 { font-family: 'Merriweather', serif;  
+  font-size: 2rem; color: black; margin: 0; font-weight: 400; }
+.content1 .notification { position: relative; }
+.content1 .notification .bi-bell { width: 24px; height: 24px; color: black; }
+.content1 .notification .messge { position: absolute; top: -5px; right: -8px;
+   background-color: red; color: white; width: 18px; 
+   height: 18px; border-radius: 50%; display: flex; align-items: center; 
+   justify-content: center; font-size: 12px; font-weight: bold; }
+.detection-wrapper { width: 100%; border-collapse: collapse; 
+  background-color: white; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+   border-radius: 8px; overflow: hidden; }
+
+
+/* Fichier : DetectionMalade.css */
+
+/* Conteneur principal de la page de détection */
+.detection-page-content {
+  width: 100%;
+  height: 100%; /* Prend toute la hauteur disponible */
+  display: flex;
+  flex-direction: column; /* Aligne le header et le contenu verticalement */
+  gap: 30px; /* Espace entre le header et la carte de détection */
+}
+
+/* Style du nouveau header large */
+
+
+.detection-header .left-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.detection-header h3 {
+  margin: 0;
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.detection-header .bi-list, 
+.detection-header .bi-bell {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+/* Style de la notification (identique à l'autre header) */
+.detection-header .notification {
+  position: relative;
+}
+.detection-header .messge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background-color: red;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Wrapper pour centrer la carte de détection */
+.detection-wrapper {
+  flex-grow: 1; /* Fait en sorte que cette div prenne tout l'espace vertical restant */
+  width: 138%;
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;     /* Centre verticalement */
+}
+
+/* La carte blanche qui contient le cadre et les boutons */
+.detection-card {
+  background-color: white;
+  padding: 50px;
+   width: 138%;
+  border-radius: 16px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* Espace entre le cadre et les boutons */
+}
+
+/* Style du cadre pour l'icône */
+.image-frame {
+  width: 250px;
+  height: 250px;
+  border: 3px solid black;
+  background-color: #f8f9fa; /* Léger fond gris à l'intérieur */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style de l'icône de profil */
+.profile-icon {
+  width: 120px;
+  height: 120px;
+  color: #6c757d; /* Gris foncé pour l'icône */
+}
+
+/* Conteneur des boutons */
+.button-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* Style des boutons */
+.button-container button {
+  background-color: #00C4B4;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.button-container button:hover {
+  background-color: #00a99d;
+  transform: translateY(-2px);
+}

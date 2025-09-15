@@ -1,0 +1,278 @@
+/* History.css */
+
+/* --- Importation de la police de caractères --- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- Styles Généraux --- */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  overflow-x: hidden; /* Empêche le défilement horizontal pendant l'animation */
+}
+
+/* --- Conteneur Principal --- */
+.main-container {
+  display: flex;
+}
+
+/* --- Panneau de Navigation (Gauche) --- */
+.layout-left {
+  width: 280px;
+  min-width: 280px; /* Important pour que la largeur soit fixe */
+  min-height: 100vh;
+  background-color: #00A99D;
+  color: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  /* AJOUT : Transition pour une animation fluide */
+  transition: min-width 0.4s ease, width 0.4s ease, padding 0.4s ease;
+}
+
+/* ========================================================= */
+/* NOUVEAU : Style pour cacher la barre latérale             */
+/* ========================================================= */
+.layout-left.collapsed {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden; /* Cache le contenu quand la barre se rétrécit */
+}
+
+/* --- Le reste des styles pour la barre latérale (profil, nav...) reste inchangé --- */
+.profile {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.profile img {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.profile p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  margin-top: 15px;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  white-space: nowrap; /* Empêche le texte de passer à la ligne pendant la transition */
+}
+nav a.setting {
+  background-color: white; 
+  
+}
+.bodr{
+ border-bottom: 2px solid black;
+ padding-bottom: 10px;
+ border-radius: 25px;
+}
+nav a svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  flex-shrink: 0; /* Empêche les icônes de rétrécir */
+}
+
+
+
+/* --- Zone de Contenu (Droite) --- */
+.content {
+  flex-grow: 1;
+  width: 900px;
+  padding: 30px;
+  /* AJOUT : Transition pour l'agrandissement */
+  transition: width 0.4s ease;
+}
+
+/* --- Header dans le contenu --- */
+.content header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #00A99D;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content header .bi-list {
+  width: 38px;
+  height: 38px;
+  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+  color: black;
+}
+
+.detection-wrapper { width: 100%;
+     border-collapse: collapse; 
+  background-color: white;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+   border-radius: 8px; overflow: hidden; }
+.detection-wrapper {
+  flex-grow: 1; /* Fait en sorte que cette div prenne tout l'espace vertical restant */
+  width: 100%;
+  
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;     /* Centre verticalement */
+}
+
+/* La carte blanche qui contient le cadre et les boutons */
+.detection-card {
+  background-color: white;
+  padding: 50px;
+   width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* Espace entre le cadre et les boutons */
+}
+
+/* --- Le reste des styles reste identique --- */
+.content header h3 { font-family: 'Merriweather', serif; font-size: 2rem; color: black; margin: 0; font-weight: 400; }
+.content .search-container { position: relative; display: flex; align-items: center; }
+.content .search-container input { width: 250px; padding: 8px 15px 8px 35px; border-radius: 20px; border: 1px solid #ccc; font-size: 1rem; }
+.content .search-container .bi-search { position: absolute; left: 12px; color: #888; width: 16px; height: 16px; }
+.content .notification { position: relative; }
+.content .notification .bi-bell { width: 24px; height: 24px; color: black; }
+.content .notification .messge { position: absolute; top: -5px; right: -8px; background-color: red; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
+.card {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  padding:  27px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  margin-top: 49px;
+   /* Adjust as needed */
+}
+.icon {
+  width: 44px;
+  height: 44px;
+}
+
+.text {
+  font-size: 2.2em;
+  color: #333;
+  font-weight: bold;
+   padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.card.active {
+  background-color: #e0e0e0; /* Slightly darker for active state */
+   /* Border for active state */
+  position: relative;
+}
+
+
+
+.card.active .text::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 80px; /* Adjust as needed to align with text */
+  width: 100px; /* Length of the red underline */
+  height: 2px;
+}
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-card {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Space between fields */
+  width: 90%; /* Adjust width for responsiveness */
+  max-width: 350px; /* Maximum width for the card */
+  border-top: 5px solid #6c757d; /* Darker border at the top */
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white; /* Dark background for the avatar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Space below avatar */
+}
+
+.profile-avatar img {
+  width: 50px; /* Size of the user icon */
+  height: 50px;
+  /* Make the icon white if it's black */
+}
+
+.profile-field {
+  width: calc(100% - 40px); /* Account for padding in the card */
+  padding: 0 20px; /* Inner horizontal padding for the fields */
+}
+
+.profile-field input {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 1em;
+  color: #333;
+  text-align: left; /* Align text to the left */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+  -webkit-appearance: none; /* Remove default browser styling for inputs */
+  -moz-appearance: none;
+  appearance: none;
+}
+
+
+
+
+.edit-button {
+  background-color: #20c997; /* Teal color */
+  color: black;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px; /* Space above the button */
+  width: calc(100% - 40px); /* Match width of input fields, accounting for padding */
+  max-width: 150px; /* Max width for the button */
+}
+
+.edit-button:hover {
+  background-color: #1aae7e; /* Darker teal on hover */
+}
